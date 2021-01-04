@@ -1,0 +1,40 @@
+<div class="container">     
+    <form #form1="ngForm" name="form1" (ngSubmit)="post()" class="needs-validation" >
+      <h1 class="font-weight-light text-center">Validação Senha</h1>
+      <div class="shadow p-3 mb-5 bg-white rounded">
+        <input class="form-control form-control-lg mb-2" type="text" placeholder="Senha" [(ngModel)]='usuario.usuarioSenha' name='usuarioSenha'>
+        <small class="form-text text-muted">
+          <ul>
+            <li>Nove ou mais caracteres</li>
+            <li>Ao menos 1 dígito</li>
+            <li>Ao menos 1 letra minúscula</li>
+            <li>Ao menos 1 letra maiúscula</li>
+            <li>Ao menos 1 caractere especial: !@#$%^&*()-+</li>
+            <li>Não possuir caracteres repetidos</li>
+          </ul>
+        </small>               
+        <button data-toggle="modal" data-target="#modalExemplo" class="btn mt-4 btn-outline-primary btn-lg btn-block" type="submit">Validar</button>
+      </div>
+    </form>
+</div>
+
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Validação</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  
+        {{msgValidacaoSenha}}
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="!validacao" type="button" class="btn btn-warning btn-lg btn-block" data-dismiss="modal">Validar novamente!</button>
+        <button *ngIf="validacao" type="button" class="btn btn-success btn-lg btn-block" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
